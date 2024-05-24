@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.transaction.TransactionSystemException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -86,6 +87,15 @@ public class GlobalExceptionHandler {
         body.put("mensaje", ex.getMessage());
         //ex.printStackTrace();
         log.error("HttpMessageNotReadableException: {}", ex.toString());
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = { MissingRequestHeaderException.class })
+    public ResponseEntity<?> missingRequestHeaderException(MissingRequestHeaderException ex, WebRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("mensaje", ex.getMessage());
+        //ex.printStackTrace();
+        log.error("MissingRequestHeaderException: {}", ex.toString());
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
