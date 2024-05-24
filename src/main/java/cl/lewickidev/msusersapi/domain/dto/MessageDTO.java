@@ -1,9 +1,11 @@
 package cl.lewickidev.msusersapi.domain.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-public class Message {
+@AllArgsConstructor
+public class MessageDTO {
 
     private String mensaje;
 

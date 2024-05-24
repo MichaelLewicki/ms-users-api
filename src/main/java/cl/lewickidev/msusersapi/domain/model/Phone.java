@@ -1,5 +1,6 @@
 package cl.lewickidev.msusersapi.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -7,6 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Phone {
 
-
+    private String id;
+    private String number;
+    @JsonProperty("citycode")
+    private String cityCode;
+    @JsonProperty("countrycode")
+    private String countryCode;
 
 }
