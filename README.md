@@ -25,23 +25,31 @@ mvn clean install
 
 mvn spring-boot:run
 
-# Uso de la API
+# Gestión de Usuarios
 
-Creación de Usuarios
+puedes añadir, buscar, modificar o elimnar cualquier usuario que desees.
 
-Para crear un usuario, envía una solicitud POST a /api/v1/ms-users-api/user con el siguiente formato:
+Utiliza el endpoint POST /api/v1/ms-users-api/user/ para agregar un usuario nuevo. Además, puedes incluir sus teléfonos:
 
+payload:
 {
-  "name": "Nombre del Usuario",
-  "email": "email@dominio.com",
-  "password": "contraseña",
-  "phones": [
-    {
-      "number": "123456789",
-      "citycode": "1",
-      "countrycode": "57"
-    }
-  ]
+  {
+    "name": "Nombre Demo",
+    "email": "email@dominio.com",
+    "password": "hunter2",
+    "phones": [
+        {
+            "number": "1234567",
+            "citycode": "1",
+            "countrycode": "57"
+        },
+        {
+            "number": "1234567",
+            "citycode": "1",
+            "countrycode": "57"
+        }
+    ]
+  }
 }
 
 # Autenticación
@@ -79,33 +87,6 @@ payload:
 }
 
 La respuesta incluirá un nuevo token que podrás utilizar para la autorización.
-
-# Gestión de Usuarios
-
-puedes añadir, buscar, modificar o elimnar cualquier usuario que desees.
-
-Utiliza el endpoint POST /api/v1/ms-users-api/user/ para agregar un usuario nuevo. Además, puedes incluir sus teléfonos:
-
-payload:
-{
-  {
-    "name": "Nombre Demo",
-    "email": "email@dominio.com",
-    "password": "hunter2",
-    "phones": [
-        {
-            "number": "1234567",
-            "citycode": "1",
-            "countrycode": "57"
-        },
-        {
-            "number": "1234567",
-            "citycode": "1",
-            "countrycode": "57"
-        }
-    ]
-}
-}
 
 # Gestión de Teléfonos
 Los teléfonos se pueden gestionar de dos maneras:
