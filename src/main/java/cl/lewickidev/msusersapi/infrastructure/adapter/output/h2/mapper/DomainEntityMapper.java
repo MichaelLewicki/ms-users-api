@@ -5,6 +5,7 @@ import cl.lewickidev.msusersapi.domain.model.User;
 import cl.lewickidev.msusersapi.infrastructure.adapter.output.h2.entity.PhoneEntity;
 import cl.lewickidev.msusersapi.infrastructure.adapter.output.h2.entity.UserEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants.ComponentModel;
 import org.mapstruct.NullValueCheckStrategy;
 import org.springframework.data.domain.Page;
@@ -22,6 +23,7 @@ public interface DomainEntityMapper {
 
     Phone toDTO(PhoneEntity entity);
 
+    @Mapping(target = "user", ignore = true)
     PhoneEntity toEntity(Phone dto);
 
     default Page<Phone> toPhoneDTOs(Page<PhoneEntity> phoneEntities) {
