@@ -82,7 +82,6 @@ Copiar código
   "citycode": "1",
   "countrycode": "57"
 }
-
 Base de Datos
 No es necesario crear manualmente las tablas de la base de datos, ya que JPA se encarga de generarlas automáticamente al iniciar la aplicación.
 
