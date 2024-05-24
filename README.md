@@ -11,6 +11,12 @@ Este proyecto es una API de usuarios que permite la creación y gestión de usua
 
 No es necesario crear manualmente las tablas de la base de datos, ya que JPA se encarga de generarlas automáticamente al iniciar la aplicación. Tampoco hace falta un script.
 
+Para acceder a la base de datos en memoria, ingresar a: http://localhost:8080/h2-console
+
+JDBC URL:	jdbc:h2:mem:mydb
+User Name:	sa
+password: (no hay contraseña)
+
 # Construir el proyecto:
 
 mvn clean install
