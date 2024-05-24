@@ -13,9 +13,11 @@ No es necesario crear manualmente las tablas de la base de datos, ya que JPA se 
 
 Para acceder a la base de datos en memoria, ingresar a: http://localhost:8080/h2-console
 
-JDBC URL:	jdbc:h2:mem:mydb
-User Name:	sa
-password: (no hay contraseña)
+Luego ingresar las siguientes credenciales:
+
+1. JDBC URL:	jdbc:h2:mem:mydb
+2. User Name:	sa
+3. password: (no hay contraseña)
 
 # Construir el proyecto
 
