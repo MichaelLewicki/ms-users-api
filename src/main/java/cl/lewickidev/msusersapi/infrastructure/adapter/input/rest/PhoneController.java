@@ -14,21 +14,27 @@ public interface PhoneController {
 
     @PostMapping(value = "/user/{idUser}/phone")
     ResponseEntity<Phone> postPhoneByUserId(@Valid @NotNull @PathVariable("idUser") String idUser,
-                                            @RequestBody Phone phone) throws HandledException;
+                                            @RequestBody Phone phone,
+                                            @RequestHeader("Authorization") String bearerToken) throws HandledException;
 
     @PutMapping("/phone/{idPhone}")
-    ResponseEntity<Phone> updatePhoneById(@RequestBody Phone phone, @Valid @NotNull @PathVariable("idPhone") String idPhone) throws HandledException;
+    ResponseEntity<Phone> updatePhoneById(@RequestBody Phone phone,
+                                          @Valid @NotNull @PathVariable("idPhone") String idPhone,
+                                          @RequestHeader("Authorization") String bearerToken) throws HandledException;
 
     @GetMapping("/phone/{idPhone}")
-    ResponseEntity<Phone> findPhoneById(@Valid @NotNull @PathVariable("idPhone") String idPhone) throws HandledException;
+    ResponseEntity<Phone> findPhoneById(@Valid @NotNull @PathVariable("idPhone") String idPhone,
+                                        @RequestHeader("Authorization") String bearerToken) throws HandledException;
 
     @GetMapping("/phone")
     ResponseEntity<Page<Phone>> findAllPhones(@RequestParam(defaultValue = "0") Integer pageNo,
-                                                   @RequestParam(defaultValue = "10") Integer pageSize,
-                                                   @RequestParam(defaultValue = "id") String sortBy);
+                                              @RequestParam(defaultValue = "10") Integer pageSize,
+                                              @RequestParam(defaultValue = "id") String sortBy,
+                                              @RequestHeader("Authorization") String bearerToken) throws HandledException;
 
 
     @DeleteMapping("/phone/{idPhone}")
-    ResponseEntity<MessageDTO> deletePhoneById(@Valid @NotNull @PathVariable("idPhone") String idPhone) throws HandledException;
+    ResponseEntity<MessageDTO> deletePhoneById(@Valid @NotNull @PathVariable("idPhone") String idPhone,
+                                               @RequestHeader("Authorization") String bearerToken) throws HandledException;
 
 }

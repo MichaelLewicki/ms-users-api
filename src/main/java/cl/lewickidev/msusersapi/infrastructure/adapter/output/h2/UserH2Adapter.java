@@ -12,15 +12,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.UUID;
 
 @Component
@@ -35,9 +29,6 @@ public class UserH2Adapter implements UserOutputPort {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
     @Override
     @Transactional
     public User postUser(User user) throws HandledException {
@@ -50,7 +41,7 @@ public class UserH2Adapter implements UserOutputPort {
         userEntity.setId(UUID.randomUUID().toString());
         userEntity.setCreated(LocalDateTime.now());
         userEntity.setLastLogin(LocalDateTime.now());
-        userEntity.setToken(generateTokenForNewUser(userEntity));
+        userEntity.setToken(jwtTokenProvider.createToken(user.getEmail()));
         if (!userEntity.getPhones().isEmpty()) {
             userEntity.getPhones().forEach( phoneEntity -> {
                 if (phoneEntity.getId() == null) {
@@ -121,16 +112,6 @@ public class UserH2Adapter implements UserOutputPort {
         UserEntity userEntity = userRepository.findByEmail(email)
                 .orElseThrow(() -> new HandledException("404", "User not found searching for this email"));
         return domainEntityMapper.toDTO(userEntity);
-    }
-
-    private String generateTokenForNewUser(UserEntity userEntity) {
-        UserDetails userDetails = org.springframework.security.core.userdetails.User.withUsername(userEntity.getEmail())
-                .password(userEntity.getPassword())
-                .authorities(new ArrayList<>())
-                .build();
-        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        return jwtTokenProvider.generateToken(authentication);
     }
 
 

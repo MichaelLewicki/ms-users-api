@@ -25,7 +25,7 @@ public class UserControllerImp implements UserController {
     private UserInputPort userInputPort;
 
     @Autowired
-    AuthInputPort authInputPort;
+    private AuthInputPort authInputPort;
 
     @Override
     public ResponseEntity<User> postUser(User user) throws HandledException {
@@ -39,7 +39,8 @@ public class UserControllerImp implements UserController {
     }
 
     @Override
-    public ResponseEntity<User> updateUserById(User user, String idUser) throws HandledException {
+    public ResponseEntity<User> updateUserById(User user, String idUser, String bearerToken) throws HandledException {
+        authInputPort.validateToken(bearerToken);
         if (user.getId() != null) {
             throw new HandledException("400", "The request doesn't need to insert the ID into the payload");
         }
@@ -51,7 +52,8 @@ public class UserControllerImp implements UserController {
     }
 
     @Override
-    public ResponseEntity<User> findUserById(String idUser) throws HandledException {
+    public ResponseEntity<User> findUserById(String idUser, String bearerToken) throws HandledException {
+        authInputPort.validateToken(bearerToken);
         log.info("[findUserById] Request resource: {}", idUser.toString());
         User result = userInputPort.findUserById(idUser);
         log.info("[findUserById] Response: {}", result.toString());
@@ -59,7 +61,8 @@ public class UserControllerImp implements UserController {
     }
 
     @Override
-    public ResponseEntity<Page<User>> findAllUsers(Integer pageNo, Integer pageSize, String sortBy) throws HandledException {
+    public ResponseEntity<Page<User>> findAllUsers(Integer pageNo, Integer pageSize, String sortBy, String bearerToken) throws HandledException {
+        authInputPort.validateToken(bearerToken);
         log.info("[findAllUsers] Request: findAll");
         Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
         Page<User> result = userInputPort.findAllUsers(pageable);
@@ -68,7 +71,8 @@ public class UserControllerImp implements UserController {
     }
 
     @Override
-    public ResponseEntity<MessageDTO> deleteUserById(String idUser) throws HandledException {
+    public ResponseEntity<MessageDTO> deleteUserById(String idUser, String bearerToken) throws HandledException {
+        authInputPort.validateToken(bearerToken);
         log.info("[deleteUserById] Request resource: {}", idUser.toString());
         MessageDTO result = userInputPort.deleteUserById(idUser);
         log.info("[deleteUserById] Response: {}", result.toString());

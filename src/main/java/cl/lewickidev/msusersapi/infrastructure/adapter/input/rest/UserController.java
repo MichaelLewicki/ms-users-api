@@ -12,23 +12,27 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/v1/ms-users-api")
 public interface UserController {
 
-    @PostMapping(value = "/user/register")
+    @PostMapping(value = "/user")
     ResponseEntity<User> postUser(@RequestBody User user) throws HandledException;
 
     @PutMapping("/user/{idUser}")
     ResponseEntity<User> updateUserById(@RequestBody User user,
-                                        @Valid @NotBlank @PathVariable("idUser") String idUser) throws HandledException;
+                                        @Valid @NotBlank @PathVariable("idUser") String idUser,
+                                        @RequestHeader("Authorization") String bearerToken) throws HandledException;
 
     @GetMapping("/user/{idUser}")
-    ResponseEntity<User> findUserById(@Valid @NotBlank @PathVariable("idUser") String idUser) throws HandledException;
+    ResponseEntity<User> findUserById(@Valid @NotBlank @PathVariable("idUser") String idUser,
+                                      @RequestHeader("Authorization") String bearerToken) throws HandledException;
 
     @GetMapping("/user")
     ResponseEntity<Page<User>> findAllUsers(@RequestParam(defaultValue = "0") Integer pageNo,
-                                                    @RequestParam(defaultValue = "10") Integer pageSize,
-                                                    @RequestParam(defaultValue = "id") String sortBy) throws HandledException;
+                                            @RequestParam(defaultValue = "10") Integer pageSize,
+                                            @RequestParam(defaultValue = "id") String sortBy,
+                                            @RequestHeader("Authorization") String bearerToken) throws HandledException;
 
 
     @DeleteMapping("/user/{idUser}")
-    ResponseEntity<MessageDTO> deleteUserById(@Valid @NotBlank @PathVariable("idUser") String idUser) throws HandledException;
+    ResponseEntity<MessageDTO> deleteUserById(@Valid @NotBlank @PathVariable("idUser") String idUser,
+                                              @RequestHeader("Authorization") String bearerToken) throws HandledException;
 
 }
