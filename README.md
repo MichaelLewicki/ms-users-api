@@ -46,18 +46,24 @@ Para crear un usuario, envía una solicitud POST a /api/v1/ms-users-api/user con
 
 # Autenticación
 
+Para poder generar un login que permita acceder a todos endpoints de la api, se pueden hacer dos cosas:
+
 1. Al crear un usuario, recibirás una respuesta que incluye un campo token. Este token debe ser utilizado para la autenticación en futuras solicitudes.
 
-2. Puedes hacer uso de auth/login usando un email y contraseña cuando lo necesites. 
+2. Puedes hacer uso de auth/login usando un email y contraseña cuando lo necesites. Este endpoint devuelve un token como respuesta. 
 
-# Configuración en Postman:
+# Autenticación en Postman:
 
-Copia el valor del campo token.
-En Postman, selecciona "Authorization".
-En el tipo de autorización, selecciona "Bearer Token".
-Pega el token copiado en el campo correspondiente.
+1. Copia el valor del campo token.
+
+2. En Postman, selecciona "Authorization".
+
+3. En el tipo de autorización, selecciona "Bearer Token".
+
+4. Pega el token copiado en el campo Token.
 
 # Iniciar Sesión
+
 Si no capturaste el token al crear el usuario, puedes iniciar sesión para obtener uno nuevo:
 
 URL: http://localhost:8080/api/v1/ms-users-api/auth/login
