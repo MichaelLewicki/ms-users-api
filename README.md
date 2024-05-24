@@ -17,11 +17,11 @@ JDBC URL:	jdbc:h2:mem:mydb
 User Name:	sa
 password: (no hay contraseña)
 
-# Construir el proyecto:
+# Construir el proyecto
 
 mvn clean install
 
-# Ejecutar la aplicación:
+# Ejecutar la aplicación
 
 mvn spring-boot:run
 
@@ -52,7 +52,7 @@ Para poder generar un login que permita acceder a todos endpoints de la api, se 
 
 2. Puedes hacer uso de auth/login usando un email y contraseña cuando lo necesites. Este endpoint devuelve un token como respuesta. 
 
-# Autenticación en Postman:
+# Autenticación en Postman
 
 1. Copia el valor del campo token.
 
@@ -80,7 +80,7 @@ payload:
 
 La respuesta incluirá un nuevo token que podrás utilizar para la autorización.
 
-# Gestión de Usuarios:
+# Gestión de Usuarios
 
 puedes añadir, buscar, modificar o elimnar cualquier usuario que desees.
 
@@ -118,8 +118,7 @@ Utiliza el endpoint POST /api/v1/ms-users-api/user/{userId}/phone para agregar t
 
 URL: http://localhost:8080/api/v1/ms-users-api/users/{userId}/phone
 Método: POST
-Cuerpo:
-json
+payload:
 {
   "number": "123456789",
   "citycode": "1",
