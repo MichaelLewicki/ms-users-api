@@ -80,11 +80,11 @@ payload:
 
 La respuesta incluirá un nuevo token que podrás utilizar para la autorización.
 
-# Gestión de usuarios:
+# Gestión de Usuarios:
 
 puedes añadir, buscar, modificar o elimnar cualquier usuario que desees.
 
-Utiliza el endpoint POST /api/v1/ms-users-api/user/ para agregar un usuario nuevo. Además, puedes incluir sus teléfonos teléfonos:
+Utiliza el endpoint POST /api/v1/ms-users-api/user/ para agregar un usuario nuevo. Además, puedes incluir sus teléfonos:
 
 payload:
 {
