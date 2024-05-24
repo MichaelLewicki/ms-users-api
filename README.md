@@ -62,6 +62,10 @@ Para poder generar un login que permita acceder a todos endpoints de la api, se 
 
 4. Pega el token copiado en el campo Token.
 
+# Swagger
+
+Puedes acceder a la swagger-ui ejecutando la app y accediendo a http://localhost:8080/swagger-ui/index.html
+
 # Iniciar Sesión
 
 Si no capturaste el token al crear el usuario, puedes iniciar sesión para obtener uno nuevo:
