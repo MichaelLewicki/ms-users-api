@@ -19,7 +19,7 @@ mvn clean install
 
 mvn spring-boot:run
 
-#Uso de la API
+# Uso de la API
 
 Creación de Usuarios
 
@@ -38,7 +38,7 @@ Para crear un usuario, envía una solicitud POST a /api/v1/ms-users-api/user con
   ]
 }
 
-#Autenticación
+# Autenticación
 
 Obtener el token de autenticación: Al crear un usuario, recibirás una respuesta que incluye un campo token. Este token debe ser utilizado para la autenticación en futuras solicitudes.
 
@@ -59,9 +59,10 @@ Cuerpo:
   "email": "email@dominio.com",
   "password": "contraseña"
 }
+
 La respuesta incluirá un nuevo token que podrás utilizar para la autorización.
 
-Gestión de Teléfonos
+# Gestión de Teléfonos
 Los teléfonos se pueden gestionar de dos maneras:
 
 Al crear un usuario:
