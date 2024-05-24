@@ -38,7 +38,11 @@ public class AuthUseCase implements AuthInputPort {
 
     @Override
     public Boolean validateToken(String token) throws HandledException {
-        return jwtTokenProvider.validateToken(token);
+        if (jwtTokenProvider.validateToken(token)) {
+           return true;
+        } else {
+            throw new HandledException("401", "this token is not valid");
+        }
     }
 
     @Override
