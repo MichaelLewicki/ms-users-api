@@ -62,13 +62,40 @@ Si no capturaste el token al crear el usuario, puedes iniciar sesión para obten
 
 URL: http://localhost:8080/api/v1/ms-users-api/auth/login
 Método: POST
-Cuerpo:
+payload:
 {
   "email": "email@dominio.com",
   "password": "contraseña"
 }
 
 La respuesta incluirá un nuevo token que podrás utilizar para la autorización.
+
+# Gestión de usuario:
+
+puedes añadir, buscar, modificar o elimnar cualquier usuario que desees.
+
+Utiliza el endpoint POST /api/v1/ms-users-api/user/ para agregar un usuario nuevo. Además, puedes incluir sus teléfonos teléfonos:
+
+payload:
+{
+  {
+    "name": "Nombre Demo",
+    "email": "email@dominio.com",
+    "password": "hunter2",
+    "phones": [
+        {
+            "number": "1234567",
+            "citycode": "1",
+            "countrycode": "57"
+        },
+        {
+            "number": "1234567",
+            "citycode": "1",
+            "countrycode": "57"
+        }
+    ]
+}
+}
 
 # Gestión de Teléfonos
 Los teléfonos se pueden gestionar de dos maneras:
