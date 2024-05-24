@@ -14,8 +14,6 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-    private Key secretKey;
-
     @Value("${jwt.expiration-time}")
     private Long expirationTime;
 
@@ -24,6 +22,8 @@ public class JwtTokenProvider {
         byte[] decodedKey = Base64.getDecoder().decode(secretKeyString);
         this.secretKey = new SecretKeySpec(decodedKey, 0, decodedKey.length, "HmacSHA256");
     }
+
+    private Key secretKey;
 
     public String createToken(String username) {
         return Jwts.builder()
@@ -39,16 +39,18 @@ public class JwtTokenProvider {
             if (token.startsWith("Bearer ")) {
                 token = token.substring(7);
             }
-            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+            Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
     }
 
     public String getUsernameFromToken(String token) {
-        Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+        Claims claims = Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody();
         return claims.getSubject();
     }
 }
