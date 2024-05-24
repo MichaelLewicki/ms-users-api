@@ -80,7 +80,7 @@ payload:
 
 La respuesta incluirá un nuevo token que podrás utilizar para la autorización.
 
-# Gestión de usuario:
+# Gestión de usuarios:
 
 puedes añadir, buscar, modificar o elimnar cualquier usuario que desees.
 
@@ -110,10 +110,10 @@ payload:
 # Gestión de Teléfonos
 Los teléfonos se pueden gestionar de dos maneras:
 
-Al crear un usuario:
+1. Al crear un usuario:
 Puedes incluir un array de teléfonos en el campo phones al crear un usuario.
 
-Creación posterior:
+2. Creación posterior:
 Utiliza el endpoint POST /api/v1/ms-users-api/user/{userId}/phone para agregar teléfonos a un usuario existente. Reemplaza {userId} con el ID del usuario correspondiente.
 
 URL: http://localhost:8080/api/v1/ms-users-api/users/{userId}/phone
