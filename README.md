@@ -7,7 +7,7 @@ Este proyecto es una API de usuarios que permite la creación y gestión de usua
 - **JDK 17**: Este proyecto fue desarrollado y probado con JDK 17. Es posible que funcione con versiones superiores, pero no se ha verificado.
 - **Maven 3.9.1**: Utilizado para la gestión de dependencias y construcción del proyecto. Se recomienda utilizar esta versión para evitar incompatibilidades.
 
-# Base de Datos
+# Base de Datos H2 (memoria)
 
 No es necesario crear manualmente las tablas de la base de datos, ya que JPA se encarga de generarlas automáticamente al iniciar la aplicación. Tampoco hace falta un script.
 
