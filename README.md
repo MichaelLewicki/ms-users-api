@@ -46,7 +46,9 @@ Para crear un usuario, envía una solicitud POST a /api/v1/ms-users-api/user con
 
 # Autenticación
 
-Obtener el token de autenticación: Al crear un usuario, recibirás una respuesta que incluye un campo token. Este token debe ser utilizado para la autenticación en futuras solicitudes.
+1. Al crear un usuario, recibirás una respuesta que incluye un campo token. Este token debe ser utilizado para la autenticación en futuras solicitudes.
+
+2. Puedes hacer uso de auth/login usando un email y contraseña cuando lo necesites. 
 
 # Configuración en Postman:
 
