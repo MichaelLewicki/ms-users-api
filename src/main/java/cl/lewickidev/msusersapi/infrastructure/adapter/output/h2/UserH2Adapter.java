@@ -75,7 +75,7 @@ public class UserH2Adapter implements UserOutputPort {
             userFound.setToken(user.getToken());
         }
         if (user.getIsActive() != null) {
-            userFound.setIsActive(userFound.getIsActive());
+            userFound.setIsActive(user.getIsActive());
         }
         userFound.setModified(LocalDateTime.now());
         return domainEntityMapper.toDTO(userRepository.save(userFound));
