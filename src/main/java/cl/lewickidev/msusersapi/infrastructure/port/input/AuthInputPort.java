@@ -11,7 +11,7 @@ import java.util.Date;
 
 public interface AuthInputPort {
 
-    TokenDTO authenticateUser(AuthDTO authDTO);
+    TokenDTO authenticateUser(AuthDTO authDTO) throws HandledException;
 
     String createToken(String username);
 

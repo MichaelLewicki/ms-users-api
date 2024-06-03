@@ -20,4 +20,6 @@ public interface UserOutputPort {
 
     User findUserByEmail(String email) throws HandledException;
 
+    void authenticateUserByEmail(String email, String jwt) throws HandledException;
+
 }

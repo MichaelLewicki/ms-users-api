@@ -8,6 +8,7 @@ import cl.lewickidev.msusersapi.infrastructure.adapter.output.h2.repository.User
 import cl.lewickidev.msusersapi.infrastructure.port.output.UserOutputPort;
 import cl.lewickidev.msusersapi.infrastructure.exception.HandledException;
 import cl.lewickidev.msusersapi.infrastructure.util.JwtTokenProvider;
+import cl.lewickidev.msusersapi.infrastructure.util.PasswordEncoder;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 @Component
@@ -29,6 +31,9 @@ public class UserH2Adapter implements UserOutputPort {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     @Transactional
     public User postUser(User user) throws HandledException {
@@ -39,6 +44,7 @@ public class UserH2Adapter implements UserOutputPort {
         }
         UserEntity userEntity = domainEntityMapper.toEntity(user);
         userEntity.setId(UUID.randomUUID().toString());
+        userEntity.setPassword(passwordEncoder.hashPassword(user.getPassword()));
         userEntity.setCreated(LocalDateTime.now());
         userEntity.setLastLogin(LocalDateTime.now());
         userEntity.setToken(jwtTokenProvider.createToken(user.getEmail()));
@@ -105,7 +111,6 @@ public class UserH2Adapter implements UserOutputPort {
         return new MessageDTO("record deleted");
     }
 
-
     @Override
     @Transactional
     public User findUserByEmail(String email) throws HandledException {
@@ -114,5 +119,16 @@ public class UserH2Adapter implements UserOutputPort {
         return domainEntityMapper.toDTO(userEntity);
     }
 
+    @Override
+    @Transactional
+    public void authenticateUserByEmail(String email, String jwt) throws HandledException {
+        Optional<UserEntity> userEntity = userRepository.findByEmail(email);
+        if (userEntity.isPresent()) {
+            userEntity.get().setToken(jwt);
+            userRepository.save(userEntity.get());
+        } else {
+            throw new HandledException("404", "User not found");
+        }
+    }
 
 }

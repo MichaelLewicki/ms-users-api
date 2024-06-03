@@ -50,7 +50,7 @@ public class UserUseCase implements UserInputPort {
         return userOutputPort.deleteUserById(idUser);
     }
 
-    public boolean isValidPassword(String password) {
+    private Boolean isValidPassword(String password) {
         Pattern pattern = Pattern.compile(regularExpression);
         return pattern.matcher(password).matches();
     }
