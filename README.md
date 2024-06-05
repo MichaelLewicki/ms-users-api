@@ -19,6 +19,12 @@ Luego ingresar las siguientes credenciales:
 2. User Name:	sa
 3. password: (no hay contraseña)
 
+# Swagger
+
+Puedes acceder a la swagger-ui ejecutando la app y accediendo a http://localhost:8080/swagger-ui/index.html
+
+La respuesta incluirá un nuevo token que podrás utilizar para la autorización.
+
 # Construir el proyecto
 
 mvn clean install
@@ -44,9 +50,3 @@ Para poder generar un login que permita acceder a todos endpoints de la api, se 
 3. En el tipo de autorización, selecciona "Bearer Token".
 
 4. Pega el token copiado en el campo Token.
-
-# Swagger
-
-Puedes acceder a la swagger-ui ejecutando la app y accediendo a http://localhost:8080/swagger-ui/index.html
-
-La respuesta incluirá un nuevo token que podrás utilizar para la autorización.
