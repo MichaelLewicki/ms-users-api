@@ -1,4 +1,4 @@
-package cl.lewickidev.msusersapi.infrastructure.port.input;
+package cl.lewickidev.msusersapi.application.port.output;
 
 import cl.lewickidev.msusersapi.domain.dto.MessageDTO;
 import cl.lewickidev.msusersapi.domain.model.Phone;
@@ -6,7 +6,7 @@ import cl.lewickidev.msusersapi.infrastructure.exception.HandledException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface PhoneInputPort {
+public interface PhoneOutputPort {
 
     Phone postPhoneByUserId(String idUser, Phone phone) throws HandledException;
 

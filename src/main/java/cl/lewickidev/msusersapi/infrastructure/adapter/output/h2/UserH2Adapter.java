@@ -5,7 +5,7 @@ import cl.lewickidev.msusersapi.domain.model.User;
 import cl.lewickidev.msusersapi.infrastructure.adapter.output.h2.entity.UserEntity;
 import cl.lewickidev.msusersapi.infrastructure.adapter.output.h2.mapper.DomainEntityMapper;
 import cl.lewickidev.msusersapi.infrastructure.adapter.output.h2.repository.UserRepository;
-import cl.lewickidev.msusersapi.infrastructure.port.output.UserOutputPort;
+import cl.lewickidev.msusersapi.application.port.output.UserOutputPort;
 import cl.lewickidev.msusersapi.infrastructure.exception.HandledException;
 import cl.lewickidev.msusersapi.infrastructure.util.JwtTokenProvider;
 import cl.lewickidev.msusersapi.infrastructure.util.PasswordEncoder;

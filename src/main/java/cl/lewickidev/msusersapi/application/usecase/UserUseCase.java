@@ -2,8 +2,8 @@ package cl.lewickidev.msusersapi.application.usecase;
 
 import cl.lewickidev.msusersapi.domain.dto.MessageDTO;
 import cl.lewickidev.msusersapi.domain.model.User;
-import cl.lewickidev.msusersapi.infrastructure.port.input.UserInputPort;
-import cl.lewickidev.msusersapi.infrastructure.port.output.UserOutputPort;
+import cl.lewickidev.msusersapi.application.port.input.UserInputPort;
+import cl.lewickidev.msusersapi.application.port.output.UserOutputPort;
 import cl.lewickidev.msusersapi.infrastructure.exception.HandledException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

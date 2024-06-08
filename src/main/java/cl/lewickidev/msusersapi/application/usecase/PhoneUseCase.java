@@ -2,8 +2,8 @@ package cl.lewickidev.msusersapi.application.usecase;
 
 import cl.lewickidev.msusersapi.domain.dto.MessageDTO;
 import cl.lewickidev.msusersapi.domain.model.Phone;
-import cl.lewickidev.msusersapi.infrastructure.port.input.PhoneInputPort;
-import cl.lewickidev.msusersapi.infrastructure.port.output.PhoneOutputPort;
+import cl.lewickidev.msusersapi.application.port.input.PhoneInputPort;
+import cl.lewickidev.msusersapi.application.port.output.PhoneOutputPort;
 import cl.lewickidev.msusersapi.infrastructure.exception.HandledException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

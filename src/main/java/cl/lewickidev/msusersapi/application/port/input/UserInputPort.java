@@ -1,4 +1,4 @@
-package cl.lewickidev.msusersapi.infrastructure.port.input;
+package cl.lewickidev.msusersapi.application.port.input;
 
 import cl.lewickidev.msusersapi.domain.dto.MessageDTO;
 import cl.lewickidev.msusersapi.domain.model.User;

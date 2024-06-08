@@ -7,8 +7,8 @@ import cl.lewickidev.msusersapi.infrastructure.adapter.output.h2.entity.PhoneEnt
 import cl.lewickidev.msusersapi.infrastructure.adapter.output.h2.entity.UserEntity;
 import cl.lewickidev.msusersapi.infrastructure.adapter.output.h2.mapper.DomainEntityMapper;
 import cl.lewickidev.msusersapi.infrastructure.adapter.output.h2.repository.PhoneRepository;
-import cl.lewickidev.msusersapi.infrastructure.port.output.PhoneOutputPort;
-import cl.lewickidev.msusersapi.infrastructure.port.output.UserOutputPort;
+import cl.lewickidev.msusersapi.application.port.output.PhoneOutputPort;
+import cl.lewickidev.msusersapi.application.port.output.UserOutputPort;
 import cl.lewickidev.msusersapi.infrastructure.exception.HandledException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
