@@ -7,6 +7,14 @@ Este proyecto es una API de usuarios que permite la creación y gestión de usua
 - **JDK 17**: Este proyecto fue desarrollado y probado con JDK 17. Es posible que funcione con versiones superiores, pero no se ha verificado.
 - **Maven 3.9.1**: Utilizado para la gestión de dependencias y construcción del proyecto. Se recomienda utilizar esta versión para evitar incompatibilidades.
 
+# Construir el proyecto
+
+mvn clean install
+
+# Ejecutar la aplicación
+
+mvn spring-boot:run
+
 # Base de Datos H2 (memoria)
 
 No es necesario crear manualmente las tablas de la base de datos, ya que JPA se encarga de generarlas automáticamente al iniciar la aplicación. Tampoco hace falta un script.
@@ -19,40 +27,11 @@ Luego ingresar las siguientes credenciales:
 2. User Name:	sa
 3. password: (no hay contraseña)
 
-# Construir el proyecto
+# Swagger
 
-mvn clean install
+Puedes acceder a la swagger-ui ejecutando la app y accediendo a http://localhost:8080/swagger-ui/index.html
 
-# Ejecutar la aplicación
-
-mvn spring-boot:run
-
-# Gestión de Usuarios
-
-puedes añadir, buscar, modificar o elimnar cualquier usuario que desees.
-
-Utiliza el endpoint POST /api/v1/ms-users-api/user/ para agregar un usuario nuevo. Además, puedes incluir sus teléfonos:
-
-payload:
-{
-  {
-    "name": "Nombre Demo",
-    "email": "email@dominio.com",
-    "password": "hunter2",
-    "phones": [
-        {
-            "number": "1234567",
-            "citycode": "1",
-            "countrycode": "57"
-        },
-        {
-            "number": "1234567",
-            "citycode": "1",
-            "countrycode": "57"
-        }
-    ]
-  }
-}
+La respuesta incluirá un nuevo token que podrás utilizar para la autorización.
 
 # Autenticación
 
@@ -66,44 +45,8 @@ Para poder generar un login que permita acceder a todos endpoints de la api, se 
 
 1. Copia el valor del campo token.
 
-2. En Postman, selecciona "Authorization".
+2. En Postman, selecciona "Authorization" a nivel de tu colección o en la request que estés utilizando.
 
 3. En el tipo de autorización, selecciona "Bearer Token".
 
 4. Pega el token copiado en el campo Token.
-
-# Swagger
-
-Puedes acceder a la swagger-ui ejecutando la app y accediendo a http://localhost:8080/swagger-ui/index.html
-
-# Iniciar Sesión
-
-Si no capturaste el token al crear el usuario, puedes iniciar sesión para obtener uno nuevo:
-
-URL: http://localhost:8080/api/v1/ms-users-api/auth/login
-Método: POST
-payload:
-{
-  "email": "email@dominio.com",
-  "password": "contraseña"
-}
-
-La respuesta incluirá un nuevo token que podrás utilizar para la autorización.
-
-# Gestión de Teléfonos
-Los teléfonos se pueden gestionar de dos maneras:
-
-1. Al crear un usuario:
-Puedes incluir un array de teléfonos en el campo phones al crear un usuario.
-
-2. Creación posterior:
-Utiliza el endpoint POST /api/v1/ms-users-api/user/{userId}/phone para agregar teléfonos a un usuario existente. Reemplaza {userId} con el ID del usuario correspondiente.
-
-URL: http://localhost:8080/api/v1/ms-users-api/users/{userId}/phone
-Método: POST
-payload:
-{
-  "number": "123456789",
-  "citycode": "1",
-  "countrycode": "57"
-}
