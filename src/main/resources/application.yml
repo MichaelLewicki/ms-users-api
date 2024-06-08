@@ -32,7 +32,7 @@ swagger:
   description: "Microservice to manage users and phone numbers. Hexagonal architecture."
   version: 1.0.0
 jwt:
-  secret-key: YXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkYXNkc2FkYXNkYXNkYXNkYXNk
+  secret-key: Y2xhdmVUb2tlblNlY3JldEtleU1zVXNlcnNBcGkxMjM0NTU0MzIxNjc4OTk4NzY=
   expiration-time: 3600000 # 1h in millisecond
 app:
   password:
